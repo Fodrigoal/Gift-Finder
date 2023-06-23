@@ -1,0 +1,250 @@
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenavstart [mode]="handset ? 'over' : 'side'" [opened]="handset ? 'false' : 'true'" class="sidebar">
+      <ul class="categories">
+        <li [style.background]=bookSelected class="category">
+          <h5 (click)="openDiv('book')" class="tag hover" [style.background]=bookBg>
+            Book, Comics & Manga</h5>
+          <div *ngIf="isShow == 'book'" class="subcategories">
+            <label *ngFor="let subCategory of subBook" class="subcategories">
+              <button #input value="book" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="book" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <li [style.background]=cASelected class="category">
+          <h5 (click)="openDiv('cA')" class="tag hover" [style.background]=cABg>Clothing & Accessories</h5>
+          <div *ngIf="isShow == 'cA'" class="subcategories">
+            <label *ngFor="let subCategory of subCA" class="subcategories">
+              <button #input value="cA" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="cA" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <li [style.background]=eDSSelected class="category">
+          <h5 (click)="openDiv('eDS')" class="tag hover" [style.background]=eDSBg>Eat, Drink & Smoke</h5>
+          <div *ngIf="isShow == 'eDS'" class="subcategories">
+            <label *ngFor="let subCategory of subEDS" class="subcategories">
+              <button #input value="eDS" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="eDS" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <!-- <li [style.background]=fPFSelected class="category">
+          <h5 (click)="openDiv('fPF')" class="tag hover" [style.background]=fPFBg>Friends, Partner & Family</h5>
+          <div *ngIf="isShow == 'fPF'" class="subcategories">
+            <label *ngFor="let subCategory of subFPF" class="subcategories">
+              <button #input value="fPF" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};" name="fPF"
+                class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li> -->
+        <li [style.background]=hBSelected class="category">
+          <h5 (click)="openDiv('hB')" class="tag hover" [style.background]=hBBg>Health & Beauty</h5>
+          <div *ngIf="isShow == 'hB'" class="subcategories">
+            <label *ngFor="let subCategory of subHB" class="subcategories">
+              <button #input value="hB" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="hB" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <li [style.background]=hGSelected class="category">
+          <h5 (click)="openDiv('hG')" class="tag hover" [style.background]=hGBg>Home & Garden</h5>
+          <div *ngIf="isShow == 'hG'" class="subcategories">
+            <label *ngFor="let subCategory of subHG" class="subcategories">
+              <button #input value="hG" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="hG" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <!-- <li [style.background]=gPCSelected class="category">
+          <h5 (click)="openDiv('gPC')" class="tag hover" [style.background]=gPCBg>Geeky & Pop Culture</h5>
+          <div *ngIf="isShow == 'gPC'" class="subcategories">
+            <label *ngFor="let subCategory of subGPC" class="subcategories">
+              <button #input value="gPC" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="gPC" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <li [style.background]=musicSelected class="category">
+          <h5 (click)="openDiv('music')" class="tag hover" [style.background]=musicBg>Music</h5>
+          <div *ngIf="isShow == 'music'" class="subcategories">
+            <label *ngFor="let subCategory of subMusic" class="subcategories">
+              <button #input value="music" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="music" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <li [style.background]=petSelected class="category">
+          <h5 (click)="openDiv('pet')" class="tag hover" [style.background]=petBg>Pets & Plants Supplies</h5>
+          <div *ngIf="isShow == 'pet'" class="subcategories">
+            <label *ngFor="let subCategory of subPet" class="subcategories">
+              <button #input value="pet" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="pet" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <li [style.background]=sportsSelected class="category">
+          <h5 (click)="openDiv('sports')" class="tag hover" [style.background]=sportsBg>Sports & Fitness</h5>
+          <div *ngIf="isShow == 'sports'" class="subcategories">
+            <label *ngFor="let subCategory of subSports" class="subcategories">
+              <button #input value="sports" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="sports" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name }}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <li [style.background]=technologySelected class="category">
+          <h5 (click)="openDiv('technology')" class="tag hover" [style.background]=technologyBg>Technology & Gadgets
+          </h5>
+          <div *ngIf="isShow == 'technology'" class="subcategories">
+            <label *ngFor="let subCategory of subTechnology" class="subcategories">
+              <button #input value="technology" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="technology" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <li [style.background]=tPBSelected class="category">
+          <h5 (click)="openDiv('tPB')" class="tag hover" [style.background]=tPBBg>Toys, Puzzles & Boardgames</h5>
+          <div *ngIf="isShow == 'tPB'" class="subcategories">
+            <label *ngFor="let subCategory of subTPB" class="subcategories">
+              <button #input value="tPB" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="tPB" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <li [style.background]=travelSelected class="category">
+          <h5 (click)="openDiv('travel')" class="tag hover" [style.background]=travelBg>Travel</h5>
+          <div *ngIf="isShow == 'travel'" class="subcategories">
+            <label *ngFor="let subCategory of subTravel" class="subcategories">
+              <button #input value="travel" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="travel" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li>
+        <li [style.background]=videogameSelected class="category">
+          <h5 (click)="openDiv('videogame')" class="tag hover" [style.background]=videogameBg>Videogame</h5>
+          <div *ngIf="isShow == 'videogame'" class="subcategories">
+            <label *ngFor="let subCategory of subVideogame" class="subcategories">
+              <button #input value="videogame" id="{{subCategory.name}}" style="background-color:#{{subCategory.bg}};"
+                name="videogame" class="hobby hover" (click)="toggleTags($event.target, input.value)">
+                {{subCategory.name}}
+              </button>
+              <br>
+            </label>
+          </div>
+        </li> -->
+      </ul>
+      <div class="slider">
+        <div class="range-slider  results-slider">
+          <input type="text" class="js-range-slider" value="" />
+        </div>
+      </div>
+      <div class="update">
+        <button type="button" class="sidenav-button" (click)="updateGifts()">Update gifts</button>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav #sidenavend position="end" [mode]="handset ? 'over' : 'side'" [opened]="handset ? 'false' : 'true'"
+      class="sidebar spotlight-bar">
+      <div *ngFor="let item of list" class="spotlight">
+        <div class="spotlight-top">
+          <img src="{{item.image}}" alt="{{item.alt}}">
+          <p class="name">{{item.name}}</p>
+          <!-- <div>
+            <p>C${{item.price}}</p>
+          </div> -->
+        </div>
+        <div class="spotlight-bottom">
+          <button type="button" class="sidenav-button">Buy</button>
+          <button type="button" class="sidenav-button" (click)="removeFromList(item)"> Remove</button></div>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="mobile-bottom">
+        <div class="search">
+          <div class="left">
+            <fa-icon *ngIf="handset" [icon]="search" class="search-icon" (click)="sidenavstart.open()"></fa-icon>
+          </div>
+          <div class="right">
+            <p>Deep Search</p>
+          </div>
+        </div>
+        <div class="gift">
+          <div class="left">
+            <fa-icon *ngIf="handset" [icon]="gift" class="gift-icon" (click)="sidenavend.open()"></fa-icon>
+          </div>
+          <div class="right">
+            <p>Spotlight</p>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let gift of gifts" class="gift-presentation">
+        <img class="image" src="{{gift.image}}" alt="{{gift.alt}}">
+        <div class="gift-info">
+          <h3>{{gift.name}}</h3>
+          <p style="white-space: break-spaces;">{{gift.description}}</p>
+        </div>
+        <div class="gift-bottom">
+          <div class="left-half">
+            <a href="{{gift.link}}" target="_blank"><button type="button"><!--Buy for ${{gift.price}}-->Check price</button></a>
+          </div>
+          <div class="right-half">
+            <button type="button" (click)="addToList(gift)">Add to Spotlight</button>
+          </div>
+        </div>
+      </div>
+      <div id="error-box">
+        <div class="face2">
+          <div class="eye"></div>
+          <div class="eye right"></div>
+          <div class="mouth sad"></div>
+        </div>
+        <div class="shadow"></div>
+        <div class="message">
+          <h1 class="alert">Oops!... You Did It Again</h1>
+          <p>You already added this gift to the spotlight. What's the point of having it twice, Am I Right? </p>
+        </div>
+        <button class="button-box" (click)='closeModal()'>
+          <h1 class="alert-btn">Understand</h1>
+        </button>
+      </div>
+      <div id='alrt' class="add-notification"></div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
